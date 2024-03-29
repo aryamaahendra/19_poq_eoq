@@ -8,23 +8,23 @@
 
             <x-forms.label-with-error name="name" label="Full Name" required="{{ true }}">
                 <x-forms.input-text type="text" name="name" placeholder="Nama Aku Bambang"
-                    value="{{ old('name') }}" rqeuired />
+                    value="{{ old('name') }}" required />
             </x-forms.label-with-error>
 
             <x-forms.label-with-error name="email" label="Email" required="{{ true }}">
                 <x-forms.input-text type="email" name="email" placeholder="email@aku.com"
-                    value="{{ old('email') }}" rqeuired />
+                    value="{{ old('email') }}" required />
             </x-forms.label-with-error>
 
             <x-forms.label-with-error name="password" label="Password" required="{{ true }}">
                 <x-forms.input-text type="password" name="password" placeholder="******"
-                    value="{{ old('password') }}" rqeuired />
+                    value="{{ old('password') }}" required />
             </x-forms.label-with-error>
 
             <x-forms.label-with-error name="password_confirmation" label="Konfirmasi Password"
                 value="{{ old('name') }}" required="{{ true }}">
                 <x-forms.input-text type="password" name="password_confirmation" placeholder="******"
-                    rqeuired />
+                    required />
             </x-forms.label-with-error>
 
             <div class="flex justify-end !mt-3 gap-1">

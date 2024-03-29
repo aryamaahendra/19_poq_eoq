@@ -46,6 +46,7 @@ class AppServiceProvider extends ServiceProvider
 
         // Explicit binding
         Route::model('m_user', \App\Models\User::class);
+        Route::model('m_category', \App\Models\ComponentCategory::class);
         // End Explicit binding
     }
 }

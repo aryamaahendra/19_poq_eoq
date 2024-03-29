@@ -2,19 +2,13 @@
 
 @section('content')
     <div class="w-full max-w-lg mx-auto my-6 main-card">
-        <form action="{{ route('dshb.users.update', ['m_user' => $user->id]) }}" method="POST"
-            class="card-body">
+        <form action="{{ route('dshb.components.categories.store') }}" method="POST" class="card-body">
             @csrf
-            @method('PUT')
+            @method('POST')
 
             <x-forms.label-with-error name="name" label="Full Name" required="{{ true }}">
                 <x-forms.input-text type="text" name="name" placeholder="Nama Aku Bambang"
-                    value="{{ old('name') ?? $user->name }}" required />
-            </x-forms.label-with-error>
-
-            <x-forms.label-with-error name="email" label="Email" required="{{ true }}">
-                <x-forms.input-text type="email" name="email" placeholder="email@aku.com"
-                    value="{{ old('email') ?? $user->email }}" required />
+                    value="{{ old('name') }}" required />
             </x-forms.label-with-error>
 
             <div class="flex justify-end !mt-3 gap-1">

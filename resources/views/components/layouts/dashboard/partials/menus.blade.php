@@ -13,24 +13,26 @@
 <li>
     <details>
         <summary @class([
-            'active' => Route::is('dshb.users.*'),
+            'active' =>
+                Route::is('dshb.users.*') || Route::is('dshb.components.categories.*'),
         ])>
             <x-icons.database class="w-5 h-5" />
             <span>Master Data</span>
         </summary>
 
-        <ul class="gap-1 !border shadow-md !mt-6 w-52 z-30">
+        <ul class="gap-1 !border shadow-md !mt-6 w-60 space-y-1 z-30">
             <li>
                 <a>
                     <x-icons.box class="w-5 h-5" />
-                    <span>Sprepart</span>
+                    <span>Components</span>
                 </a>
             </li>
 
             <li>
-                <a>
+                <a href="{{ route('dshb.components.categories.index') }}"
+                    @class(['active' => Route::is('dshb.components.categories.*')])>
                     <x-icons.box class="w-5 h-5" />
-                    <span>Kategori Sprepart</span>
+                    <span>Kategori Components</span>
                 </a>
             </li>
 

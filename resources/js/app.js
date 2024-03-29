@@ -1,7 +1,7 @@
 import $ from "jquery";
 import "datatables.net-dt";
 import { initFlashMessage } from "./utils";
-import { initUserTable } from "./datatables";
+import { initComponentCategories, initUserTable } from "./datatables";
 
 window.$ = $;
 window.base_url = import.meta.env.VITE_APP_URL;
@@ -15,6 +15,10 @@ $.when($.ready).then(function () {
         switch (ID) {
             case "users-table":
                 initUserTable(ID, el);
+                break;
+
+            case "components-caegories-table":
+                initComponentCategories(ID, el);
                 break;
 
             default:
