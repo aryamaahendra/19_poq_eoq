@@ -1,4 +1,5 @@
-import Metoast from './meetoast'
+import Metoast from "./meetoast";
+import MeConfirmDelete from "./confirm-delete";
 
 const initFlashMessage = () => {
     const flashType = $(`[name="flash_type"]`).val();
@@ -16,4 +17,17 @@ const initFlashMessage = () => {
         setTimeout(() => new Metoast(errorType, errorMessage).show(), 250);
 }
 
-export { Metoast, initFlashMessage }
+const getcookie = (cookieName) => {
+    const cookies = document.cookie.split("; ");
+
+    for (const cookie of cookies) {
+        const [name, value] = cookie.split("=");
+        if (name === cookieName) {
+            return decodeURIComponent(value);
+        }
+    }
+
+    return null; // Return null if the cookie is not found
+};
+
+export { Metoast, initFlashMessage, MeConfirmDelete, getcookie }

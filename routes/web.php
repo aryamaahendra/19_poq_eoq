@@ -6,11 +6,16 @@ Route::get('/', fn () =>  view('welcome'));
 
 Route::group(
     [
-        'middlerware' => ['auth'],
+        'middleware' => ['auth'],
         'prefix' => 'dashboard',
         'as' => 'dshb.'
     ],
     function () {
-        Route::get('/', fn () =>  view('welcome'))->name('index');
+
+        Route::get('users/data', [\App\Http\Controllers\UserController::class, 'data']);
+        Route::resource('users', \App\Http\Controllers\UserController::class)
+            ->parameters(['users' => 'm_user']);
+
+        Route::get('/', fn () =>  view('dashboard'))->name('index');
     }
 );

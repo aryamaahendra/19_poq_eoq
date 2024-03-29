@@ -1,7 +1,27 @@
 import $ from "jquery";
+import "datatables.net-dt";
 import { initFlashMessage } from "./utils";
-
+import { initUserTable } from "./datatables";
 
 window.$ = $;
+window.base_url = import.meta.env.VITE_APP_URL;
+window.dashboard_url = `${base_url}/dashboard`;
 
-initFlashMessage();
+$.when($.ready).then(function () {
+
+    $(`[datatable]`).each((idx, el) => {
+        const ID = $(el).attr("datatable");
+
+        switch (ID) {
+            case "users-table":
+                initUserTable(ID, el);
+                break;
+
+            default:
+                console.error("Error: tables not found.");
+                return;
+        }
+    });
+
+    initFlashMessage();
+});

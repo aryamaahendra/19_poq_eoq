@@ -7,3 +7,93 @@
         font-family: "Roboto", sans-serif;
     }
 }
+
+/* Data Table */
+#side-scroll::-webkit-scrollbar-track,
+[datatable] .overflow-x-auto::-webkit-scrollbar-track {
+    /* -webkit-box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.3); */
+    border-radius: 8px;
+    @apply bg-base-100;
+}
+
+#side-scroll::-webkit-scrollbar,
+[datatable] .overflow-x-auto::-webkit-scrollbar {
+    width: 8px;
+    height: 6px;
+    @apply bg-base-200;
+}
+
+#side-scroll::-webkit-scrollbar-thumb,
+[datatable] .overflow-x-auto::-webkit-scrollbar-thumb {
+    border-radius: 8px;
+    @apply bg-base-300;
+}
+
+[datatable] table {
+    @apply table table-zebra;
+}
+
+[datatable] table thead tr th {
+    @apply uppercase text-xs font-semibold;
+}
+
+[datatable] table thead tr th.sorting.sorting_desc .up {
+    @apply stroke-base-content;
+}
+
+[datatable] table thead tr th.sorting.sorting_asc .down {
+    @apply stroke-base-content;
+}
+
+[datatable] table tbody tr td:last-child {
+    @apply w-1;
+}
+
+[datatable] table tbody tr td {
+    @apply py-2;
+}
+
+[datatable] table tr td,
+[datatable] table tr th {
+    @apply border border-base-300;
+}
+
+[datatable] table tr td:first-child,
+[datatable] table tr th:first-child {
+    @apply border-l-0;
+}
+
+[datatable] table tr td:last-child,
+[datatable] table tr th:last-child {
+    @apply border-r-0;
+}
+
+[datatable] .pagination {
+    @apply flex items-center justify-between p-4;
+}
+
+[datatable] .pagination .dt-info {
+    @apply text-sm font-normal;
+}
+
+[datatable] .pagination .dt-paging {
+    @apply join rounded overflow-hidden;
+}
+
+[datatable] .pagination .dt-paging .dt-paging-button {
+    @apply join-item btn h-10 min-h-10 p-3 rounded-none;
+}
+
+[datatable] .pagination .dt-paging .dt-paging-button.current {
+    @apply btn-primary  btn-disabled;
+}
+
+[datatable] .pagination .dt-paging .dt-paging-button.disabled,
+[datatable] .pagination .dt-paging .ellipsis {
+    @apply join-item btn rounded-none h-10 min-h-10 p-3 bg-base-300 btn-disabled;
+}
+/* End Data Table */
+
+.main-card {
+    @apply card bg-base-100 !border border-base-300;
+}
