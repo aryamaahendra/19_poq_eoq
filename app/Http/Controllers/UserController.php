@@ -3,12 +3,18 @@
 namespace App\Http\Controllers;
 
 use App\Actions\Users\DTUser;
+use App\Http\Requests\Users\CreateUser;
+use App\Http\Requests\Users\UpdateUser;
+use App\Http\Requests\Users\DeleteUser;
 use Illuminate\Http\JsonResponse;
+use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
 use Illuminate\View\View;
 
 class UserController extends Controller
 {
+    protected string $flashMessageObj = 'user';
+
     /**
      * Display a listing of the Users.
      */
@@ -28,17 +34,21 @@ class UserController extends Controller
     /**
      * Show the form for creating a new Users.
      */
-    public function create()
+    public function create(): View
     {
-        //
+        return view('users.create');
     }
 
     /**
      * Store a newly created resource in storage.
      */
-    public function store(Request $request)
+    public function store(CreateUser $request): RedirectResponse
     {
-        //
+        $request->fulfill();
+
+        return redirect()->route('dshb.users.index')->with(
+            $this->createdFlashMessage()
+        );
     }
 
     /**
@@ -52,24 +62,33 @@ class UserController extends Controller
     /**
      * Show the form for editing the specified Users.
      */
-    public function edit(string $id)
+    public function edit(Request $request): View
     {
-        //
+        $user = $request->route('m_user');
+        return view('users.update', compact('user'));
     }
 
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, string $id)
+    public function update(UpdateUser $request)
     {
-        //
+        $request->fulfill();
+
+        return redirect()->route('dshb.users.index')->with(
+            $this->updatedFlashMessage()
+        );
     }
 
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(string $id)
+    public function destroy(DeleteUser $request)
     {
-        //
+        $request->fulfill();
+
+        return redirect()->route('dshb.users.index')->with(
+            $this->deletedFlashMessage()
+        );
     }
 }

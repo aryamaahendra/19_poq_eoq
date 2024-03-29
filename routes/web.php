@@ -12,7 +12,9 @@ Route::group(
     ],
     function () {
 
-        Route::get('users/data', [\App\Http\Controllers\UserController::class, 'data']);
+        Route::get('users/data', [\App\Http\Controllers\UserController::class, 'data'])
+            ->name('users.data');
+
         Route::resource('users', \App\Http\Controllers\UserController::class)
             ->parameters(['users' => 'm_user']);
 

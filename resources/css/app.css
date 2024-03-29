@@ -97,3 +97,7 @@
 .main-card {
     @apply card bg-base-100 !border border-base-300;
 }
+
+summary.active {
+    @apply bg-neutral text-neutral-content hover:bg-neutral hover:text-neutral-content cursor-pointer;
+}

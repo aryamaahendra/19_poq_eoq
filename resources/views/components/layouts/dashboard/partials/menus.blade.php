@@ -12,12 +12,14 @@
 </li>
 <li>
     <details>
-        <summary>
+        <summary @class([
+            'active' => Route::is('dshb.users.*'),
+        ])>
             <x-icons.database class="w-5 h-5" />
             <span>Master Data</span>
         </summary>
 
-        <ul class="gap-1 !border shadow-md !mt-6 w-52">
+        <ul class="gap-1 !border shadow-md !mt-6 w-52 z-30">
             <li>
                 <a>
                     <x-icons.box class="w-5 h-5" />
@@ -33,7 +35,7 @@
             </li>
 
             <li>
-                <a>
+                <a href="{{ route('dshb.users.index') }}" @class(['active' => Route::is('dshb.users.*')])>
                     <x-icons.users class="w-5 h-5" />
                     <span>Pengguna</span>
                 </a>
