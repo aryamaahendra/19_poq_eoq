@@ -25,8 +25,6 @@
     @endif
 
     <div class="flex flex-col justify-between h-full min-h-screen">
-        @include('components.layouts.base.navbar')
-
         <main class="flex-1">
             @yield('content')
         </main>

@@ -40,7 +40,11 @@
             </ul>
         </div>
         <div class="navbar-end">
-            <a href="{{ route('login') }}" class="btn btn-primary">Login</a>
+            @if (Auth::check())
+                <a href="{{ route('dshb.index') }}" class="btn btn-primary">Dashboard</a>
+            @else
+                <a href="{{ route('login') }}" class="btn btn-primary">Login</a>
+            @endif
         </div>
     </div>
 </div>
