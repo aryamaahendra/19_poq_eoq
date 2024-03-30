@@ -2,28 +2,28 @@
 
 namespace App\Http\Controllers;
 
-use App\Actions\Components\Categories\DTCategory;
-use App\Http\Requests\Components\Categories\CreateCategory;
-use App\Http\Requests\Components\Categories\UpdateCategory;
-use App\Http\Requests\Components\Categories\DeleteCategory;
+use App\Actions\Components\DTComponent;
+use App\Http\Requests\Components\CreateComponent;
+use App\Http\Requests\Components\DeleteComponent;
+use App\Http\Requests\Components\UpdateComponent;
+use App\Models\ComponentCategory;
 use Illuminate\Http\JsonResponse;
-use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
 use Illuminate\View\View;
 
-class ComponentCategoriesController extends Controller
+class ComponentController extends Controller
 {
-    protected string $flashMessageObj = 'component category';
+    protected string $flashMessageObj = 'component';
 
     /**
      * Display a listing of the resource.
      */
     public function index(): View
     {
-        return view('p_components.categories.index');
+        return view('p_components.index');
     }
 
-    public function data(DTCategory $dt): JsonResponse
+    public function data(DTComponent $dt): JsonResponse
     {
         return response()->json($dt->json());
     }
@@ -33,17 +33,17 @@ class ComponentCategoriesController extends Controller
      */
     public function create(): View
     {
-        return view('p_components.categories.create');
+        $categories = ComponentCategory::all();
+        return view('p_components.create', compact('categories'));
     }
 
     /**
      * Store a newly created resource in storage.
      */
-    public function store(CreateCategory $request): RedirectResponse
+    public function store(CreateComponent $request)
     {
         $request->fulfill();
-
-        return redirect()->route('dshb.components.categories.index')->with(
+        return redirect()->route('dshb.components.index')->with(
             $this->createdFlashMessage()
         );
     }
@@ -61,19 +61,18 @@ class ComponentCategoriesController extends Controller
      */
     public function edit(Request $request)
     {
-        $category = $request->route('m_category');
-
-        return view('p_components.categories.update', compact('category'));
+        $categories = ComponentCategory::all();
+        $component = $request->route('m_component');
+        return view('p_components.update', compact('component', 'categories'));
     }
 
     /**
      * Update the specified resource in storage.
      */
-    public function update(UpdateCategory $request)
+    public function update(UpdateComponent $request)
     {
         $request->fulfill();
-
-        return redirect()->route('dshb.components.categories.index')->with(
+        return redirect()->route('dshb.components.index')->with(
             $this->updatedFlashMessage()
         );
     }
@@ -81,11 +80,11 @@ class ComponentCategoriesController extends Controller
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(DeleteCategory $request)
+    public function destroy(DeleteComponent $request)
     {
         $request->fulfill();
 
-        return redirect()->route('dshb.components.categories.index')->with(
+        return redirect()->route('dshb.components.index')->with(
             $this->deletedFlashMessage()
         );
     }
