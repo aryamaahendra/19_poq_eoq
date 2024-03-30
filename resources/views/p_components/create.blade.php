@@ -25,6 +25,20 @@
                 </select>
             </x-forms.label-with-error>
 
+            <x-forms.label-with-error name="measurement" label="Satuan Akur"
+                required="{{ true }}">
+
+                <select name="measurement" class="w-full select select-bordered">
+                    <option disabled selected>pilih category</option>
+                    @forelse (Measurement::all() as $measurement)
+                        <option @selected($measurement == old('measurement')) value="{{ $measurement }}">
+                            {{ $measurement }}
+                        </option>
+                    @empty
+                    @endforelse
+                </select>
+            </x-forms.label-with-error>
+
             <div class="flex justify-end !mt-3 gap-1">
                 <a href="{{ route('dshb.users.index') }}" class="btn btn-primary btn-ghost">
                     <x-icons.arrow-left class="w-4 h-4" />

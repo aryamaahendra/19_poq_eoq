@@ -2,9 +2,11 @@
 
 namespace App\Http\Requests\Components;
 
+use App\Actions\Components\MeasurementEnum;
 use App\Http\Requests\Fulfill;
 use App\Models\Component;
 use Illuminate\Foundation\Http\FormRequest;
+use Illuminate\Support\Arr;
 
 class CreateComponent extends FormRequest implements Fulfill
 {
@@ -26,6 +28,7 @@ class CreateComponent extends FormRequest implements Fulfill
         return [
             'name' => ['required', 'string', 'max:128'],
             'category_id' => ['required', 'numeric'],
+            'measurement' => ['required', 'string', 'in:' . Arr::join(MeasurementEnum::all(), ',')]
         ];
     }
 

@@ -18,6 +18,11 @@ const initComponentTable = (ID, el) => {
                 className: "whitespace-nowrap",
             },
             {
+                data: "measurement",
+                render: $.fn.dataTable.render.text(),
+                className: "whitespace-nowrap",
+            },
+            {
                 data: "created_at",
                 className: "w-1 whitespace-nowrap",
                 render: $.fn.dataTable.render.text(),

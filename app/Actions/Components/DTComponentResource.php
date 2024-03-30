@@ -14,6 +14,7 @@ class DTComponentResource extends JsonResource
         return [
             'id' => $this->id,
             'name' => $this->name,
+            'measurement' => $this->measurement,
             'category' => new DTCategoryResource($this->category),
             'created_at' => Carbon::create($this->created_at)->diffForHumans(),
             'actions' => [

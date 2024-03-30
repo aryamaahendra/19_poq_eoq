@@ -10,6 +10,7 @@
             @php
                 $id = $component->id;
                 $name = $component->name;
+                $measurement = $component->measurement;
             @endphp
 
             <x-forms.label-with-error name="name" label="Name" required="{{ true }}">
@@ -25,6 +26,20 @@
                     @forelse ($categories as $category)
                         <option @selected($category->id == (old('category_id') ?? $id)) value="{{ $category->id }}">
                             {{ $category->name }}
+                        </option>
+                    @empty
+                    @endforelse
+                </select>
+            </x-forms.label-with-error>
+
+            <x-forms.label-with-error name="measurement" label="Satuan Akur"
+                required="{{ true }}">
+
+                <select name="measurement" class="w-full select select-bordered">
+                    <option disabled selected>pilih category</option>
+                    @forelse (Measurement::all() as $measurement)
+                        <option @selected($measurement == (old('measurement') ?? $measurement)) value="{{ $measurement }}">
+                            {{ $measurement }}
                         </option>
                     @empty
                     @endforelse

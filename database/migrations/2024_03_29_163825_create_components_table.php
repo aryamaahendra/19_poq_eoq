@@ -1,5 +1,6 @@
 <?php
 
+use App\Actions\Components\MeasurementEnum;
 use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
@@ -14,6 +15,7 @@ return new class extends Migration
         Schema::create('components', function (Blueprint $table) {
             $table->id();
             $table->string('name', 128);
+            $table->enum('measurement', MeasurementEnum::all());
 
             $table->unsignedBigInteger('category_id');
             $table->foreign('category_id')->references('id')->on('component_categories');
