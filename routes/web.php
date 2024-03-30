@@ -37,6 +37,12 @@ Route::group(
         Route::resource('components', \App\Http\Controllers\ComponentController::class)
             ->parameters(['components' => 'm_component']);
 
+        Route::resource('penjualan', \App\Http\Controllers\SellController::class)
+            ->parameters(['penjualan' => 'm_sell'])->names('sell');
+
+        Route::resource('pembelian', \App\Http\Controllers\OrderController::class)
+            ->parameters(['pembelian' => 'm_order'])->names('order');
+
         Route::get('/', fn () =>  view('dashboard'))->name('index');
     }
 );
