@@ -13,13 +13,13 @@ class DTComponent extends BaseDataTable
 
     protected function query(): EloquentBuilder|QueryBuilder
     {
-        $heads = ['name', 'category_id', 'measurement', 'created_at'];
+        $heads = ['name', 'category_id', 'in_stock', 'measurement', 'created_at'];
 
         $search = request()->query('search')['value'];
         $order = request()->query('order')[0]['column'];
         $dir = request()->query('order')[0]['dir'];
 
-        return Component::query()->with(['category'])->select(['id', 'name', 'measurement', 'category_id'])
+        return Component::query()->with(['category'])->select(['id', 'name', 'measurement', 'in_stock', 'category_id'])
             ->when($search, fn ($query) => $query->mesearch(['name'], $search))
             ->orderBy($heads[$order], $dir);
     }

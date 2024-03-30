@@ -21,6 +21,7 @@
                 <thead>
                     <x-th-shortable text="Name" />
                     <x-th-shortable text="Category" />
+                    <x-th-shortable text="In Stock" />
                     <x-th-shortable text="Satuan Ukur" />
                     <x-th-shortable text="Dibuat" />
                     <th class="w-1"></th>

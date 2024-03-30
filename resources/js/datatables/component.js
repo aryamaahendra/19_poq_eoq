@@ -5,7 +5,7 @@ const initComponentTable = (ID, el) => {
     const url = `${base_url}/dashboard/components/data`;
 
     const table = initDataTable(ID, el, url, {
-        order: [[2, "desc"]],
+        order: [[4, "desc"]],
         columns: [
             {
                 data: "name",
@@ -14,6 +14,11 @@ const initComponentTable = (ID, el) => {
             },
             {
                 data: "category.name",
+                render: $.fn.dataTable.render.text(),
+                className: "whitespace-nowrap",
+            },
+            {
+                data: "in_stock",
                 render: $.fn.dataTable.render.text(),
                 className: "whitespace-nowrap",
             },
