@@ -11,8 +11,6 @@ const initFlashMessage = () => {
     const errorType = $(`[name="error_type"]`).val();
     const errorMessage = $(`[name="error_message"]`).val();
 
-    console.log(errorType, errorMessage);
-
     if (errorType && errorMessage)
         setTimeout(() => new Metoast(errorType, errorMessage).show(), 250);
 }

@@ -13,6 +13,9 @@
     <link rel="preconnect" href="https://fonts.bunny.net">
     <link href="https://fonts.bunny.net/css?family=roboto:300,400,500,700,900" rel="stylesheet" />
 
+    @stack('style')
+
+    <link rel="stylesheet" href="{{ asset('choices.min.css') }}" />
     @vite(['resources/css/app.css'])
 </head>
 
