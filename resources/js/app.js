@@ -7,6 +7,7 @@ import {
     initComponentCategories, initComponentTable,
     initOrderTable, initUserTable
 } from "./datatables";
+import initSellTable from "./datatables/sell-table";
 
 window.$ = $;
 window.base_url = import.meta.env.VITE_APP_URL;
@@ -32,6 +33,10 @@ $.when($.ready).then(function () {
 
             case "order-table":
                 initOrderTable(ID, el);
+                break;
+
+            case "sell-table":
+                initSellTable(ID, el);
                 break;
 
             default:
@@ -94,9 +99,9 @@ $.when($.ready).then(function () {
                                 <input type="text" name="components[${e.detail.choice.value}][qty]" class="grow" placeholder="9999" required />
                                 <span>Buah</span>
                             </label>
-                            <label class="flex items-center gap-2 input input-sm input-bordered">
+                            <label class="flex items-center gap-2 input input-sm input-bordered vehicle_number_wrapper">
                                 <span>No Kendaraan</span>
-                                <input type="text" name="components[${e.detail.choice.value}][vehicle_number]" class="grow" placeholder="DN 9999 WR" required />
+                                <input type="text" name="components[${e.detail.choice.value}][vehicle_number]" class="grow" placeholder="DN 9999 WR" />
                             </label>
                             <label class="flex items-center gap-2 input input-sm input-bordered">
                                 <span>Ket</span>

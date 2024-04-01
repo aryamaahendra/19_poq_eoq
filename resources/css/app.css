@@ -101,3 +101,7 @@
 summary.active {
     @apply bg-neutral text-neutral-content hover:bg-neutral hover:text-neutral-content cursor-pointer;
 }
+
+.sell .vehicle_number_wrapper {
+    @apply !hidden;
+}

@@ -24,12 +24,13 @@
                 placeholder="9999" value="{{ $old['qty'] }}" required />
             <span>Buah</span>
         </label>
-        <label class="flex items-center gap-2 input input-sm input-bordered">
+
+        <label class="flex items-center gap-2 input input-sm input-bordered vehicle_number_wrapper">
             <span>No Kendaraan</span>
             <input type="text" name="components[{{ $key }}][vehicle_number]"
-                class="grow" placeholder="DN 9999 WR" value="{{ $old['vehicle_number'] }}"
-                required />
+                class="grow" placeholder="DN 9999 WR" value="{{ $old['vehicle_number'] }}" />
         </label>
+
         <label class="flex items-center gap-2 input input-sm input-bordered">
             <span>Ket</span>
             <input type="text" name="components[{{ $key }}][description]"

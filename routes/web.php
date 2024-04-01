@@ -37,6 +37,12 @@ Route::group(
         Route::resource('components', \App\Http\Controllers\ComponentController::class)
             ->parameters(['components' => 'm_component']);
 
+        Route::get(
+            'penjualan/data',
+            [\App\Http\Controllers\SellController::class, 'data']
+        )
+            ->name('sell.data');
+
         Route::resource('penjualan', \App\Http\Controllers\SellController::class)
             ->parameters(['penjualan' => 'm_sell'])->names('sell');
 
