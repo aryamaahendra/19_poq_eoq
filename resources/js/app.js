@@ -9,6 +9,8 @@ import {
 } from "./datatables";
 import initSellTable from "./datatables/sell-table";
 
+import initKanban from "./kanban";
+
 window.$ = $;
 window.base_url = import.meta.env.VITE_APP_URL;
 window.dashboard_url = `${base_url}/dashboard`;
@@ -46,6 +48,8 @@ $.when($.ready).then(function () {
     });
 
     initFlashMessage();
+
+    initKanban();
 
     $(`[choicejs="components"]`).each((idx, el) => {
 

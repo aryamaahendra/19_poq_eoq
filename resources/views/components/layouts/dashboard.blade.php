@@ -16,6 +16,7 @@
     @stack('style')
 
     <link rel="stylesheet" href="{{ asset('choices.min.css') }}" />
+    <link rel="stylesheet" href="{{ asset('jkanban.min.css') }}" />
     @vite(['resources/css/app.css'])
 </head>
 
@@ -41,6 +42,7 @@
         </footer>
     </div>
 
+    <script src="{{ asset('jkanban.min.js') }}"></script>
     @vite(['resources/js/app.js'])
 </body>
 

@@ -5,7 +5,7 @@ const initOrderTable = (ID, el) => {
     const url = `${base_url}/dashboard/pembelian/data`;
 
     const table = initDataTable(ID, el, url, {
-        order: [[4, "desc"]],
+        order: [[2, "desc"]],
         columns: [
             {
                 data: "no",

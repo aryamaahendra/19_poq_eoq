@@ -5,7 +5,7 @@ const initSellTable = (ID, el) => {
     const url = `${base_url}/dashboard/penjualan/data`;
 
     const table = initDataTable(ID, el, url, {
-        order: [[4, "desc"]],
+        order: [[1, "desc"]],
         columns: [
             {
                 data: "no",

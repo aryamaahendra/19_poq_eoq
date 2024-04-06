@@ -13,7 +13,7 @@ class DTOrder extends BaseDataTable
 
     protected function query(): EloquentBuilder|QueryBuilder
     {
-        $heads = ['no', 'date', 'from', 'total_item', 'total_price'];
+        $heads = ['no', 'from', 'date', 'total_item', 'total_price'];
 
         $search = request()->query('search')['value'];
         $order = request()->query('order')[0]['column'];
@@ -21,7 +21,7 @@ class DTOrder extends BaseDataTable
 
         return Order::query()->when(
             $search,
-            fn ($query) => $query->mesearch(['name', 'email'], $search)
+            fn ($query) => $query->mesearch(['from', 'no'], $search)
         )
             ->orderBy($heads[$order], $dir);
     }

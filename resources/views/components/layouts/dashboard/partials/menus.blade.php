@@ -4,6 +4,7 @@
         <span>Dashbaord</span>
     </a>
 </li>
+
 <li>
     <details>
         <summary @class([
@@ -30,6 +31,7 @@
         </ul>
     </details>
 </li>
+
 <li>
     <details>
         <summary @class([
@@ -66,6 +68,26 @@
                 <a href="{{ route('dshb.users.index') }}" @class(['active' => Route::is('dshb.users.*')])>
                     <x-icons.users class="w-5 h-5" />
                     <span>Pengguna</span>
+                </a>
+            </li>
+        </ul>
+    </details>
+</li>
+
+<li>
+    <details>
+        <summary @class([
+            'active' => Route::is('dshb.kanban'),
+        ])>
+            <x-icons.apps class="w-5 h-5" />
+            <span></span>
+        </summary>
+
+        <ul class="gap-1 !border shadow-md !mt-6 w-48 space-y-1 z-30">
+            <li>
+                <a href="{{ route('dshb.kanban') }}" @class(['active' => Route::is('dshb.kanban')])>
+                    <x-icons.layout-kanban class="w-5 h-5" />
+                    <span>Kanban Board</span>
                 </a>
             </li>
         </ul>

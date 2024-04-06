@@ -105,3 +105,15 @@ summary.active {
 .sell .vehicle_number_wrapper {
     @apply !hidden;
 }
+
+#kanban-wrapper .kanban-board {
+    @apply bg-base-100 border border-base-300 rounded-3xl;
+}
+
+#kanban-wrapper .kanban-board .kanban-board-header {
+    @apply border-b border-base-300;
+}
+
+#kanban-wrapper .kanban-board .kanban-board-header .kanban-title-board {
+    @apply font-medium text-base;
+}

@@ -55,6 +55,8 @@ Route::group(
         Route::resource('pembelian', \App\Http\Controllers\OrderController::class)
             ->parameters(['pembelian' => 'm_order'])->names('order');
 
+        Route::get('/kanban-board', fn () =>  view('kanban'))->name('kanban');
+
         Route::get('/', fn () =>  view('dashboard'))->name('index');
     }
 );
