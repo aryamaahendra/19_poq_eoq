@@ -53,8 +53,10 @@ class UpdateSell extends CreateSell
                     $totalPrice = $qty * $unit_price;
                     $sumPrice += $totalPrice;
 
-                    Component::where('id', $item->component_id)
-                        ->increment('in_stock', (int) $item->qty - $qty);
+                    if ($qty != $item->qty) {
+                        Component::where('id', $item->component_id)
+                            ->increment('in_stock', (int) $item->qty - $qty);
+                    }
 
                     $item->forceFill(
                         [
