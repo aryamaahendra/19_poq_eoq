@@ -42,6 +42,8 @@
         </footer>
     </div>
 
+    @stack('modal')
+
     <script src="{{ asset('jkanban.min.js') }}"></script>
     @vite(['resources/js/app.js'])
 </body>

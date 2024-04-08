@@ -23,9 +23,10 @@ class AlgorithmController extends Controller
         return response()->json($dt->json());
     }
 
-    public function proses()
+    public function proses(Request $request)
     {
         $components = Component::all();
+        $maxof = (int) $request->query('maxof');
 
         foreach ($components as $component) {
             $H = (int) $component->holding_cost_unit; // persentase biaya penyimpanan barang
@@ -42,7 +43,11 @@ class AlgorithmController extends Controller
             $ROP = 0;
 
             if ($sumOfSell > 0 && $D > 0) {
-                $OrderingFrequency = 1;
+                $OrderingFrequency = ceil($EOQ / $D);
+                if ($OrderingFrequency > $maxof) {
+                    $OrderingFrequency = $maxof;
+                }
+
                 $POQ = ceil($EOQ /  $OrderingFrequency);
 
                 $safetyStock = ceil(($sumOfSell / 90) * 3);
