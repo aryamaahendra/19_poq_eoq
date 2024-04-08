@@ -12,6 +12,15 @@ Route::group(
     ],
     function () {
 
+        Route::get('algorithm/proses', [\App\Http\Controllers\AlgorithmController::class, 'proses'])
+            ->name('algoritm.proses');
+
+        Route::get('algorithm/data', [\App\Http\Controllers\AlgorithmController::class, 'data'])
+            ->name('algoritm.data');
+
+        Route::get('algorithm', [\App\Http\Controllers\AlgorithmController::class, 'index'])
+            ->name('algoritm.index');
+
         Route::get('users/data', [\App\Http\Controllers\UserController::class, 'data'])
             ->name('users.data');
 
@@ -24,7 +33,10 @@ Route::group(
         )
             ->name('components.categories.data');
 
-        Route::resource('components/categories', \App\Http\Controllers\ComponentCategoriesController::class)
+        Route::resource(
+            'components/categories',
+            \App\Http\Controllers\ComponentCategoriesController::class
+        )
             ->parameters(['categories' => 'm_category'])
             ->names('components.categories');
 

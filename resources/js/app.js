@@ -10,6 +10,7 @@ import {
 import initSellTable from "./datatables/sell-table";
 
 import initKanban from "./kanban";
+import initAlgorithmTable from "./datatables/algorithm-table";
 
 window.$ = $;
 window.base_url = import.meta.env.VITE_APP_URL;
@@ -39,6 +40,10 @@ $.when($.ready).then(function () {
 
             case "sell-table":
                 initSellTable(ID, el);
+                break;
+
+            case "algorithm-table":
+                initAlgorithmTable(ID, el);
                 break;
 
             default:
