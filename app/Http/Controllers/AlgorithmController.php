@@ -9,13 +9,17 @@ use App\Models\Sell;
 use App\Models\SellItem;
 use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Request;
+use Illuminate\Support\Arr;
+use Illuminate\Support\Facades\Cache;
 use Illuminate\View\View;
+use Illuminate\Support\Str;
 
 class AlgorithmController extends Controller
 {
     public function index(): View
     {
-        return view('algorithm.index');
+        $data = Cache::get('order_dates', null);
+        return view('algorithm.index', compact('data'));
     }
 
     public function data(DTAlgorithm $dt): JsonResponse
@@ -26,7 +30,11 @@ class AlgorithmController extends Controller
     public function proses(Request $request)
     {
         $components = Component::all();
-        $maxof = (int) $request->query('maxof');
+        $maxof = (int) $request->input('maxof');
+
+        $dates = explode(',', $request->input('order_date'));
+        if (count($dates) != $maxof) abort(400);
+        Cache::forget('order_dates');
 
         foreach ($components as $component) {
             $H = (int) $component->holding_cost_unit; // persentase biaya penyimpanan barang
@@ -69,6 +77,8 @@ class AlgorithmController extends Controller
                 ]
             );
         }
+
+        Cache::rememberForever('order_dates', fn () => ['maxof' => $maxof, 'dates' => $dates]);
 
         return redirect()->route('dshb.algoritm.index');
     }

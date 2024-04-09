@@ -17,6 +17,13 @@
                 </div>
             </div>
 
+            <div class="flex gap-4 px-4 mt-2 mb-2">
+                <div>Max Order Frequency: {{ $data != null ? $data['maxof'] : -1 }}x per bulan</div>
+                <div>Tanggal Pemesanan:
+                    {{ $data != null ? \Illuminate\Support\Arr::join($data['dates'], ', ', ' dan ') : -1 }}
+                </div>
+            </div>
+
             <table id="algorithm-table" class="w-full border-t border-b stripe">
                 <thead>
                     <x-th-shortable text="Name" />
@@ -38,13 +45,21 @@
 @push('modal')
     <!-- Open the modal using ID.showModal() method -->
     <dialog id="proses__modal" class="modal">
-        <form action="{{ route('dshb.algoritm.proses', []) }}" class="modal-box">
+        <form action="{{ route('dshb.algoritm.proses', []) }}" class="modal-box" method="POST">
+            @csrf
+
             <h3 class="text-lg font-bold">PROSES EOQ & POQ</h3>
 
-            <div>
+            <div id="proses_algo_wrapper" class="space-y-2">
                 <x-forms.label-with-error name="maxof" label="Max OF (Order Frequency)"
                     required="{{ true }}">
                     <x-forms.input-text type="number" min="1" name="maxof" placeholder="1"
+                        value="{{ old('no') }}" required />
+                </x-forms.label-with-error>
+
+                <x-forms.label-with-error name="order_date" label="Tanggal Pemesanan (no space)"
+                    required="{{ true }}">
+                    <x-forms.input-text type="text" name="order_date" placeholder="1,15,29"
                         value="{{ old('no') }}" required />
                 </x-forms.label-with-error>
             </div>

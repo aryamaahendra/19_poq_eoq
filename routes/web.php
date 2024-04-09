@@ -12,7 +12,7 @@ Route::group(
     ],
     function () {
 
-        Route::get('algorithm/proses', [\App\Http\Controllers\AlgorithmController::class, 'proses'])
+        Route::post('algorithm/proses', [\App\Http\Controllers\AlgorithmController::class, 'proses'])
             ->name('algoritm.proses');
 
         Route::get('algorithm/data', [\App\Http\Controllers\AlgorithmController::class, 'data'])

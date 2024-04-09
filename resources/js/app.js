@@ -17,6 +17,33 @@ window.base_url = import.meta.env.VITE_APP_URL;
 window.dashboard_url = `${base_url}/dashboard`;
 
 $.when($.ready).then(function () {
+    // let count = 0;
+    // let currVal = -1;
+
+    // $(`#proses_algo_wrapper`).each((_, el) => {
+    //     $(el).find(`[name="maxof"]`).on("change", (e) => {
+    //         if (e.currentTarget.value > currVal) {
+    //             count++;
+
+    //             $(el).append(`
+    //             <label order-date="${count}" class="w-full form-control">
+    //                 <div class="label">
+    //                     <span class="label-text">
+    //                         Tanggal Order ${count}
+    //                         <span class="text-error">*</span>
+    //                     </span>
+    //                 </div>
+    //                 <input type="date" name="date[]" required="required" class="w-full input input-bordered" />
+    //             </label>
+    //             `)
+    //         } else if (e.currentTarget.value < currVal) {
+    //             $(el).find(`[order-date="${count}"]`).remove();
+    //             count--;
+    //         }
+
+    //         currVal = e.currentTarget.value;
+    //     });
+    // });
 
     $(`[datatable]`).each((idx, el) => {
         const ID = $(el).attr("datatable");
