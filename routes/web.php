@@ -12,6 +12,9 @@ Route::group(
     ],
     function () {
 
+        Route::get('kanban-board/data', [\App\Http\Controllers\KanbanController::class, 'data']);
+        Route::get('/kanban-board', fn () =>  view('kanban'))->name('kanban');
+
         Route::post('algorithm/proses', [\App\Http\Controllers\AlgorithmController::class, 'proses'])
             ->name('algoritm.proses');
 
@@ -66,8 +69,6 @@ Route::group(
 
         Route::resource('pembelian', \App\Http\Controllers\OrderController::class)
             ->parameters(['pembelian' => 'm_order'])->names('order');
-
-        Route::get('/kanban-board', fn () =>  view('kanban'))->name('kanban');
 
         Route::get('/', fn () =>  view('dashboard'))->name('index');
     }
