@@ -123,24 +123,24 @@ $.when($.ready).then(function () {
                             </button>
                         </div>
 
-                        <div class="mt-4 space-y-2">
+                        <div class="mt-4 grid grid-cols-2 gap-2 ">
                             <input type="hidden" name="components[${e.detail.choice.value}][label]" value="${e.detail.choice.label}" />
                             <label class="flex items-center gap-2 input input-sm input-bordered">
-                                Harga Unit
+                                <span class="text-base-content/60">Harga Unit: </span>
                                 <input type="text" name="components[${e.detail.choice.value}][unit_price]" class="grow" placeholder="1000000" required />
                             </label>
 
                             <label class="flex items-center gap-2 input input-sm input-bordered">
-                                <span>Quantity</span>
+                                <span class="text-base-content/60">Quantity</span>
                                 <input type="text" name="components[${e.detail.choice.value}][qty]" class="grow" placeholder="9999" required />
-                                <span>Buah</span>
+                                <span class="text-base-content/60">Buah</span>
                             </label>
                             <label class="flex items-center gap-2 input input-sm input-bordered vehicle_number_wrapper">
-                                <span>No Kendaraan</span>
+                                <span class="text-base-content/60">No Kendaraan</span>
                                 <input type="text" name="components[${e.detail.choice.value}][vehicle_number]" class="grow" placeholder="DN 9999 WR" />
                             </label>
                             <label class="flex items-center gap-2 input input-sm input-bordered">
-                                <span>Ket</span>
+                                <span class="text-base-content/60">Ket</span>
                                 <input type="text" name="components[${e.detail.choice.value}][description]" class="grow" placeholder="-" required value="-" />
                             </label>
                         </div>

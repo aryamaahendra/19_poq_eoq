@@ -21,10 +21,19 @@
                 $olds = old('components');
             @endphp
 
-            <div class="grid grid-cols-2 gap-12">
-                @include('orders.partials.selec-components', compact('olds'))
+            <div class="">
+                <div class="flex justify-end gap-1">
+                    <a href="{{ route('dshb.users.index') }}" class="btn btn-primary btn-ghost">
+                        <x-icons.arrow-left class="w-4 h-4" />
+                        Kembali
+                    </a>
 
-                <div class="space-y-2">
+                    <button type="submit" class="btn btn-primary">
+                        Simpan
+                    </button>
+                </div>
+
+                <div class="grid grid-cols-2 gap-2 pb-8 mb-8 border-b">
                     <x-forms.label-with-error name="no" label="No."
                         required="{{ true }}">
                         <x-forms.input-text type="text" name="no" placeholder="**/ST/2022"
@@ -48,18 +57,10 @@
                         <x-forms.input-text type="text" name="at" placeholder="-"
                             value="{{ old('at') }}" required />
                     </x-forms.label-with-error>
-
-                    <div class="flex justify-end !mt-3 gap-1">
-                        <a href="{{ route('dshb.users.index') }}" class="btn btn-primary btn-ghost">
-                            <x-icons.arrow-left class="w-4 h-4" />
-                            Kembali
-                        </a>
-
-                        <button type="submit" class="btn btn-primary">
-                            Simpan
-                        </button>
-                    </div>
                 </div>
+
+                @include('orders.partials.selec-components', compact('olds'))
+
             </div>
         </form>
     </div>
