@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Actions\Metode;
 use App\Actions\Orders\DTOrder;
 use App\Http\Requests\Orders\CreateOrder;
 use App\Http\Requests\Orders\DeleteOrder;
@@ -31,10 +32,18 @@ class OrderController extends Controller
     /**
      * Show the form for creating a new resource.
      */
-    public function create(): View
+    public function create(Request $request): View
     {
-        $components = Component::all();
-        return view('orders.create', compact('components'));
+        $recommendedIDs = $request->query('components');
+        $recommended = null;
+
+        if ($recommendedIDs) {
+            $recommended = Component::with(['algorithm', 'category'])
+                ->whereIn('id', $recommendedIDs)->get();
+        }
+
+        $components = Component::all(['id', 'name', 'measurement']);
+        return view('orders.create', compact('components', 'recommended'));
     }
 
     /**
@@ -90,5 +99,11 @@ class OrderController extends Controller
         return redirect()->route('dshb.order.index')->with(
             $this->updatedFlashMessage()
         );
+    }
+
+    public function recommended(): View
+    {
+        $rows = Metode::recommendedOrder();
+        return view('orders.recomended', compact('rows'));
     }
 }

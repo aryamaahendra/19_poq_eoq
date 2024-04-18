@@ -10,6 +10,10 @@
                 </div>
 
                 <div class="flex items-center gap-1">
+                    <a href="{{ route('dshb.order.recommended') }}" class="btn btn-secondary">
+                        <span>RECOMMENDED</span>
+                        {{-- <x-icons.plus class="w-5 h-5 stroke-current" /> --}}
+                    </a>
                     <a href="{{ route('dshb.order.create') }}" class="btn btn-primary">
                         <span>TAMBAH</span>
                         <x-icons.plus class="w-5 h-5 stroke-current" />

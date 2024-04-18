@@ -12,11 +12,28 @@
     </x-forms.label-with-error>
 
     <div id="component-container" class="mt-8 space-y-2">
+        @if (empty($olds) && isset($recommended) && $recommended != null)
+            @forelse ($recommended as $key => $rec)
+                @include('orders.partials.select-item', [
+                    'old' => [
+                        'label' => $rec->name,
+                        'unit_price' => '0',
+                        'qty' => $rec->algorithm->EOQ,
+                        'vehicle_number' => 'Stock',
+                        'description' => '-',
+                    ],
+                    'key' => $key,
+                    'compt' => $rec,
+                ])
+            @empty
+            @endforelse
+        @endif
+
         @if (!empty($olds))
             @forelse ($olds as $key => $old)
                 @include('orders.partials.select-item', [
                     'old' => $old,
-                    'key' => $key
+                    'key' => $key,
                 ])
             @empty
             @endforelse

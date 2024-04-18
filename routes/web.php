@@ -64,8 +64,12 @@ Route::group(
         Route::get(
             'pembelian/data',
             [\App\Http\Controllers\OrderController::class, 'data']
-        )
-            ->name('order.data');
+        )->name('order.data');
+
+        Route::get(
+            'pembelian/recommended',
+            [\App\Http\Controllers\OrderController::class, 'recommended']
+        )->name('order.recommended');
 
         Route::resource('pembelian', \App\Http\Controllers\OrderController::class)
             ->parameters(['pembelian' => 'm_order'])->names('order');

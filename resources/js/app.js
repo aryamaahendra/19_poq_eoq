@@ -131,16 +131,16 @@ $.when($.ready).then(function () {
                             </label>
 
                             <label class="flex items-center gap-2 input input-sm input-bordered">
-                                <span class="text-base-content/60">Quantity</span>
+                                <span class="text-base-content/60">Quantity: </span>
                                 <input type="text" name="components[${e.detail.choice.value}][qty]" class="grow" placeholder="9999" required />
                                 <span class="text-base-content/60">Buah</span>
                             </label>
                             <label class="flex items-center gap-2 input input-sm input-bordered vehicle_number_wrapper">
-                                <span class="text-base-content/60">No Kendaraan</span>
+                                <span class="text-base-content/60">No Kendaraan: </span>
                                 <input type="text" name="components[${e.detail.choice.value}][vehicle_number]" class="grow" placeholder="DN 9999 WR" />
                             </label>
                             <label class="flex items-center gap-2 input input-sm input-bordered">
-                                <span class="text-base-content/60">Ket</span>
+                                <span class="text-base-content/60">Ket: </span>
                                 <input type="text" name="components[${e.detail.choice.value}][description]" class="grow" placeholder="-" required value="-" />
                             </label>
                         </div>

@@ -1,8 +1,35 @@
-@props(['old', 'key'])
+@props(['old', 'key', 'compt' => null])
 
 <div id="component-item-{{ $key }}" class="p-4 border border-base-300 rounded-3xl">
-    <div class="flex items-start gap-2">
-        <span class="flex-1">{{ $old['label'] }}</span>
+    <div class="flex items-start justify-between gap-2">
+        <div class="">
+            <div class="flex-1 mb-2">
+                @if ($compt)
+                    <div class="mr-1 badge badge-neutral">Recommended</div>
+                @endif
+
+                <span>{{ $old['label'] }}</span>
+            </div>
+
+            <div class="flex gap-4 text-sm text-base-content/60">
+                <div>
+                    <span>IN STOCK: </span>
+                    <span>{{ $compt?->in_stock ?? '-' }}</span>
+                </div>
+                <div>
+                    <span>POQ: </span>
+                    <span>{{ $compt?->algorithm->POQ ?? '-' }}</span>
+                </div>
+                <div>
+                    <span>EOQ: </span>
+                    <span>{{ $compt?->algorithm->EOQ ?? '-' }}</span>
+                </div>
+                <div>
+                    <span>ROP: </span>
+                    <span>{{ $compt?->algorithm->ROP ?? '-' }}</span>
+                </div>
+            </div>
+        </div>
         <button delete-component="{{ $key }}" tabindex="-1" type="button"
             class="btn btn-xs btn-error">
             hapus
