@@ -12,12 +12,10 @@ const initKanban = async () => {
         headers: { Accept: "application/json" },
     })
 
-    console.log(data);
-
     const kanban = new jKanban({
         element: "#kanban-wrapper",
         responsivePercentage: true,
-        boards: data
+        boards: JSON.parse(data.board)
     });
 
     window.kanban = kanban;

@@ -8,7 +8,10 @@
 <li>
     <details>
         <summary @class([
-            'active' => Route::is('dshb.sell.*') || Route::is('dshb.order.*'),
+            'active' =>
+                Route::is('dshb.sell.*') ||
+                Route::is('dshb.order.*') ||
+                Route::is('dshb.algoritm.index'),
         ])>
             <x-icons.shopping-bag class="w-5 h-5" />
             <span>Transaksi</span>
@@ -26,6 +29,13 @@
                 <a href="{{ route('dshb.order.index') }}" @class(['active' => Route::is('dshb.order.*')])>
                     <x-icons.shopping-bag-plus class="w-5 h-5" />
                     <span>Pembelian</span>
+                </a>
+            </li>
+
+            <li>
+                <a href="{{ route('dshb.algoritm.index') }}" @class(['active' => Route::is('dshb.algoritm.index')])>
+                    <x-icons.rocket class="w-5 h-5" />
+                    <span>POQ & EOQ</span>
                 </a>
             </li>
         </ul>
@@ -68,33 +78,6 @@
                 <a href="{{ route('dshb.users.index') }}" @class(['active' => Route::is('dshb.users.*')])>
                     <x-icons.users class="w-5 h-5" />
                     <span>Pengguna</span>
-                </a>
-            </li>
-        </ul>
-    </details>
-</li>
-
-<li>
-    <details>
-        <summary @class([
-            'active' => Route::is('dshb.kanban') || Route::is('dshb.algoritm.index'),
-        ])>
-            <x-icons.apps class="w-5 h-5" />
-            <span></span>
-        </summary>
-
-        <ul class="gap-1 !border shadow-md !mt-6 w-48 space-y-1 z-30">
-            <li>
-                <a href="{{ route('dshb.algoritm.index') }}" @class(['active' => Route::is('dshb.algoritm.index')])>
-                    <x-icons.rocket class="w-5 h-5" />
-                    <span>POQ & EOQ</span>
-                </a>
-            </li>
-
-            <li>
-                <a href="{{ route('dshb.kanban') }}" @class(['active' => Route::is('dshb.kanban')])>
-                    <x-icons.layout-kanban class="w-5 h-5" />
-                    <span>Kanban Board</span>
                 </a>
             </li>
         </ul>

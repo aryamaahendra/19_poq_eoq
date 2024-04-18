@@ -1,6 +1,8 @@
 <?php
 
+use App\Models\Kanban;
 use Illuminate\Support\Facades\Route;
+use Illuminate\Support\Str;
 
 Route::get('/', fn () =>  view('welcome'));
 

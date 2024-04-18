@@ -4,10 +4,12 @@ namespace App\Http\Requests\Orders;
 
 use App\Http\Requests\Fulfill;
 use App\Models\Component;
+use App\Models\Kanban;
 use App\Models\Order;
 use App\Models\OrderItem;
 use Illuminate\Foundation\Http\FormRequest;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Str;
 
 class CreateOrder extends FormRequest implements Fulfill
 {
@@ -84,6 +86,17 @@ class CreateOrder extends FormRequest implements Fulfill
             // update order total price
             $order->total_price = $sumPrice;
             $order->save();
+
+            $kanban = Kanban::first();
+            $board = json_decode($kanban->board, true);
+
+            array_push($board[0]['item'], [
+                'id' => Str::orderedUuid(),
+                'title' => $order->no,
+                'order' => $order->id,
+            ]);
+
+            $kanban->update(['board' => json_encode($board)]);
 
             return $order;
         });

@@ -2,9 +2,11 @@
 
 namespace Database\Seeders;
 
+use App\Models\Kanban;
 use App\Models\User;
 // use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
+use Illuminate\Support\Str;
 
 class DatabaseSeeder extends Seeder
 {
@@ -26,5 +28,29 @@ class DatabaseSeeder extends Seeder
         $this->call(OrderItemsTableSeeder::class);
         $this->call(SellsTableSeeder::class);
         $this->call(SellItemsTableSeeder::class);
+
+        Kanban::create(
+            [
+                'board' => json_encode(
+                    [
+                        [
+                            "id" => Str::orderedUuid(),
+                            "title" => "Pendding",
+                            "item" =>  []
+                        ],
+                        [
+                            "id" => Str::orderedUuid(),
+                            "title" => "Delivery",
+                            "item" =>  []
+                        ],
+                        [
+                            "id" => Str::orderedUuid(),
+                            "title" => "Success",
+                            "item" =>  []
+                        ]
+                    ]
+                )
+            ]
+        );
     }
 }

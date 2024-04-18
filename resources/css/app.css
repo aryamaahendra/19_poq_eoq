@@ -110,6 +110,10 @@ summary.active {
     @apply bg-base-100 border border-base-300 rounded-3xl;
 }
 
+#kanban-wrapper .kanban-board .kanban-item {
+    @apply bg-base-100 border border-base-300 rounded-lg;
+}
+
 #kanban-wrapper .kanban-board .kanban-board-header {
     @apply border-b border-base-300;
 }
