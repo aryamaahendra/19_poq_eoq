@@ -55,6 +55,7 @@ class CreateOrder extends FormRequest implements Fulfill
                     'date' => $inputs['date'],
                     'total_item' => count($inputs['components']),
                     'total_price' => 0,
+                    'status' => 'pendding'
                 ]
             )->save();
 
@@ -67,8 +68,8 @@ class CreateOrder extends FormRequest implements Fulfill
                 $item = new OrderItem();
 
                 // Add component stock
-                Component::where('id', $key)
-                    ->increment('in_stock', (int) $row['qty']);
+                // Component::where('id', $key)
+                //     ->increment('in_stock', (int) $row['qty']);
 
                 $item->forceFill(
                     [
@@ -93,7 +94,7 @@ class CreateOrder extends FormRequest implements Fulfill
             array_push($board[0]['item'], [
                 'id' => Str::orderedUuid(),
                 'title' => $order->no,
-                'order' => $order->id,
+                'orderID' => $order->id,
             ]);
 
             $kanban->update(['board' => json_encode($board)]);

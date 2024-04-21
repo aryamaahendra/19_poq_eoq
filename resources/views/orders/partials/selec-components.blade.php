@@ -22,7 +22,7 @@
                         'vehicle_number' => 'Stock',
                         'description' => '-',
                     ],
-                    'key' => $key,
+                    'key' => $rec->id,
                     'compt' => $rec,
                 ])
             @empty

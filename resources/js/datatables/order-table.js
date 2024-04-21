@@ -1,5 +1,5 @@
 import initDataTable from "../utils/datatable-basic";
-import { btnDelete, linkEdit, wrapper } from "../utils/datatable-buttons";
+import { orderStatus, btnDelete, checklistIcons, clockIcon, dileviryIcon, linkEdit, wrapper, basicLink, spreadsheetIcon } from "../utils/datatable-buttons";
 
 const initOrderTable = (ID, el) => {
     const url = `${base_url}/dashboard/pembelian/data`;
@@ -25,7 +25,7 @@ const initOrderTable = (ID, el) => {
             {
                 data: "total_item",
                 render: $.fn.dataTable.render.text(),
-                className: "whitespace-nowrap",
+                className: "whitespace-nowrap w-1",
             },
             {
                 data: "total_price",
@@ -33,11 +33,35 @@ const initOrderTable = (ID, el) => {
                 render: $.fn.dataTable.render.text(),
             },
             {
+                data: "status",
+                className: "w-1 whitespace-nowrap",
+                render: (data, type, row) => {
+                    let show = 'ghost';
+
+                    if (data == 'pendding') {
+                        show = 'warning';
+                    }
+                    else if (data == 'dileviry') {
+                        show = 'info';
+                    }
+                    else if (data == 'success') {
+                        show = 'success';
+                    }
+
+                    return `<div class="badge badge-${show} badge-md uppercase">${data}</div>`;
+                },
+            },
+            {
                 data: "id",
                 render: (data, type, row) => {
+                    console.log(row);
                     return wrapper(
+                        basicLink(`${dashboard_url}/pembelian/${data}/excel`, spreadsheetIcon),
+                        row.status && row.status != 'pendding' ? orderStatus(`${dashboard_url}/pembelian/status/${data}`, clockIcon, 'pendding') : '',
+                        row.status && row.status != 'dileviry' ? orderStatus(`${dashboard_url}/pembelian/status/${data}`, dileviryIcon, 'dileviry') : '',
+                        row.status && row.status != 'success' ? orderStatus(`${dashboard_url}/pembelian/status/${data}`, checklistIcons, 'success') : '',
                         linkEdit(`${dashboard_url}/pembelian/${data}/edit`),
-                        btnDelete(`${dashboard_url}/pembelian/${data}`)
+                        btnDelete(`${dashboard_url}/pembelian/${data}`),
                     );
                 },
             },

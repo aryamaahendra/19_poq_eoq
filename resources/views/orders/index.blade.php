@@ -28,6 +28,7 @@
                     <x-th-shortable text="Tanggal" />
                     <x-th-shortable text="Total Item" />
                     <x-th-shortable text="Total Harga" />
+                    <x-th-shortable text="Status" />
                     <th class="w-1"></th>
                 </thead>
 

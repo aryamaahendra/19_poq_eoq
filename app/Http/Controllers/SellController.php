@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Actions\Sells\DTSell;
+use App\Exports\SellExport;
 use App\Http\Requests\Sells\CreateSell;
 use App\Http\Requests\Sells\DeleteSell;
 use App\Http\Requests\Sells\UpdateSell;
@@ -10,6 +11,8 @@ use App\Models\Component;
 use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Request;
 use Illuminate\View\View;
+use Illuminate\Support\Str;
+use Maatwebsite\Excel\Facades\Excel;
 
 class SellController extends Controller
 {
@@ -84,5 +87,11 @@ class SellController extends Controller
         return redirect()->route('dshb.sell.index')->with(
             $this->deletedFlashMessage()
         );
+    }
+
+    public function excel(Request $request)
+    {
+        $sell = $request->route('m_sell');
+        return Excel::download(new SellExport, Str::of($sell->no)->replace('/', '-')->slug() . '-sell.xlsx');
     }
 }

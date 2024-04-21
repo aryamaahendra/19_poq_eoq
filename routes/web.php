@@ -60,6 +60,12 @@ Route::group(
         )
             ->name('sell.data');
 
+        Route::get(
+            'penjualan/{m_sell}/excel',
+            [\App\Http\Controllers\SellController::class, 'excel']
+        )
+            ->name('sell.excel');
+
         Route::resource('penjualan', \App\Http\Controllers\SellController::class)
             ->parameters(['penjualan' => 'm_sell'])->names('sell');
 
@@ -68,10 +74,20 @@ Route::group(
             [\App\Http\Controllers\OrderController::class, 'data']
         )->name('order.data');
 
+        Route::put(
+            'pembelian/status/{m_order}',
+            [\App\Http\Controllers\OrderController::class, 'status']
+        )->name('order.status');
+
         Route::get(
             'pembelian/recommended',
             [\App\Http\Controllers\OrderController::class, 'recommended']
         )->name('order.recommended');
+
+        Route::get(
+            'pembelian/{m_order}/excel',
+            [\App\Http\Controllers\OrderController::class, 'excel']
+        )->name('order.excel');
 
         Route::resource('pembelian', \App\Http\Controllers\OrderController::class)
             ->parameters(['pembelian' => 'm_order'])->names('order');

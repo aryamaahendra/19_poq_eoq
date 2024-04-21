@@ -4,13 +4,18 @@ namespace App\Http\Controllers;
 
 use App\Actions\Metode;
 use App\Actions\Orders\DTOrder;
+use App\Exports\OrderExport;
 use App\Http\Requests\Orders\CreateOrder;
 use App\Http\Requests\Orders\DeleteOrder;
 use App\Http\Requests\Orders\UpdateOrder;
+use App\Http\Requests\Orders\UpdateStatus;
 use App\Models\Component;
 use Illuminate\Http\JsonResponse;
+use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
 use Illuminate\View\View;
+use Illuminate\Support\Str;
+use Maatwebsite\Excel\Facades\Excel;
 
 class OrderController extends Controller
 {
@@ -27,6 +32,19 @@ class OrderController extends Controller
     public function data(DTOrder $dt): JsonResponse
     {
         return response()->json($dt->json());
+    }
+
+    public function status(UpdateStatus $request): JsonResponse|RedirectResponse
+    {
+        $request->fulfill();
+
+        if ($request->wantsJson()) {
+            return response()->json([], 204);
+        }
+
+        return redirect()->route('dshb.order.index')->with(
+            $this->flashMessage('status berhasil diubah', 'success')
+        );
     }
 
     /**
@@ -105,5 +123,11 @@ class OrderController extends Controller
     {
         $rows = Metode::recommendedOrder();
         return view('orders.recomended', compact('rows'));
+    }
+
+    public function excel(Request $request)
+    {
+        $order = $request->route('m_order');
+        return Excel::download(new OrderExport, Str::of($order->no)->replace('/', '-')->slug() . '-order.xlsx');
     }
 }

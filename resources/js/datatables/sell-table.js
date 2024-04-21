@@ -1,5 +1,5 @@
 import initDataTable from "../utils/datatable-basic";
-import { btnDelete, linkEdit, wrapper } from "../utils/datatable-buttons";
+import { basicLink, btnDelete, linkEdit, spreadsheetIcon, wrapper } from "../utils/datatable-buttons";
 
 const initSellTable = (ID, el) => {
     const url = `${base_url}/dashboard/penjualan/data`;
@@ -41,6 +41,7 @@ const initSellTable = (ID, el) => {
                 data: "id",
                 render: (data, type, row) => {
                     return wrapper(
+                        basicLink(`${dashboard_url}/penjualan/${data}/excel`, spreadsheetIcon),
                         linkEdit(`${dashboard_url}/penjualan/${data}/edit`),
                         btnDelete(`${dashboard_url}/penjualan/${data}`)
                     );

@@ -53,8 +53,10 @@ class UpdateOrder extends CreateOrder
                     $totalPrice = $qty * $unit_price;
                     $sumPrice += $totalPrice;
 
-                    Component::where('id', $item->component_id)
-                        ->decrement('in_stock', (int) $item->qty - $qty);
+                    if ($order->status == 'success') {
+                        Component::where('id', $item->component_id)
+                            ->decrement('in_stock', (int) $item->qty - $qty);
+                    }
 
                     $item->forceFill(
                         [
@@ -66,8 +68,10 @@ class UpdateOrder extends CreateOrder
                         ]
                     )->save();
                 } else {
-                    Component::where('id', $item->component_id)
-                        ->decrement('in_stock', (int) $item->qty);
+                    if ($order->status == 'success') {
+                        Component::where('id', $item->component_id)
+                            ->decrement('in_stock', (int) $item->qty);
+                    }
 
                     $item->delete();
                 }
@@ -81,8 +85,8 @@ class UpdateOrder extends CreateOrder
                 $item = new OrderItem();
 
                 // Add component stock
-                Component::where('id', $key)
-                    ->increment('in_stock', (int) $row['qty']);
+                // Component::where('id', $key)
+                //     ->increment('in_stock', (int) $row['qty']);
 
                 $item->forceFill(
                     [

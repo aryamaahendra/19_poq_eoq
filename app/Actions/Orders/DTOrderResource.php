@@ -16,6 +16,7 @@ class DTOrderResource extends JsonResource
             'from' => $this->from,
             'total_item' => $this->total_item,
             'total_price' => $this->total_price,
+            'status' => $this->status,
             'date' => Carbon::create($this->date)->format('D, d M Y'),
             'actions' => [
                 // 'enabled' => request()->user()->can('enabled', $this->resource),
