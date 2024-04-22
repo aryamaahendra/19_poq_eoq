@@ -1,8 +1,10 @@
 <?php
 
+use App\Exports\MonthlyExport;
 use App\Models\Kanban;
 use Illuminate\Support\Facades\Route;
 use Illuminate\Support\Str;
+use Maatwebsite\Excel\Facades\Excel;
 
 Route::get('/', fn () =>  view('welcome'));
 
@@ -91,6 +93,14 @@ Route::group(
 
         Route::resource('pembelian', \App\Http\Controllers\OrderController::class)
             ->parameters(['pembelian' => 'm_order'])->names('order');
+
+        Route::get('export', function () {
+            $export = new MonthlyExport(
+                (int) request()->query('month'),
+                (int) request()->query('year')
+            );
+            return Excel::download($export, 'text.xlsx');
+        })->name('export.monthly');
 
         Route::get('/', fn () =>  view('dashboard'))->name('index');
     }

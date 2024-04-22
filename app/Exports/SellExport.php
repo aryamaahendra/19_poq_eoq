@@ -117,6 +117,8 @@ class SellExport implements FromCollection, WithEvents
                         fn ($q) =>  $q->where('category_id', $category->id)
                     )->get();
 
+                    if (count($rows) <= 0) continue;
+
                     foreach ($rows as $item) {
                         $sheet->setCellValue([1, $workingRow], $first ? $category->name : '');
                         $sheet->setCellValue([2, $workingRow], $item->qty);
