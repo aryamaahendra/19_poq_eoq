@@ -7,6 +7,7 @@ use App\Models\Component;
 use App\Models\Sell;
 use App\Models\SellItem;
 use Illuminate\Foundation\Http\FormRequest;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
 
 class CreateSell extends FormRequest implements Fulfill
@@ -54,6 +55,7 @@ class CreateSell extends FormRequest implements Fulfill
                     'company' => $inputs['company'],
                     'total_item' => count($inputs['components']),
                     'total_price' => 0,
+                    'user_id' => Auth::user()->id
                 ]
             )->save();
 

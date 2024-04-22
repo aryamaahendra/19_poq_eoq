@@ -20,6 +20,7 @@ class DatabaseSeeder extends Seeder
         User::factory()->create([
             'name' => 'Mee Admin',
             'email' => 'admin@mail.com',
+            'is_admin' => true,
         ]);
 
         $this->call(ComponentCategoriesSeeder::class);

@@ -36,8 +36,8 @@ const initComponentTable = (ID, el) => {
                 data: "id",
                 render: (data, type, row) => {
                     return wrapper(
-                        linkEdit(`${dashboard_url}/components/${data}/edit`),
-                        btnDelete(`${dashboard_url}/components/${data}`)
+                        row.actions.update ? linkEdit(`${dashboard_url}/components/${data}/edit`) : '',
+                        row.actions.delete ? btnDelete(`${dashboard_url}/components/${data}`) : ''
                     );
                 },
             },

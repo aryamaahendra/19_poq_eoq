@@ -8,6 +8,11 @@ use Maatwebsite\Excel\Facades\Excel;
 
 Route::get('/', fn () =>  view('welcome'));
 
+Route::get(
+    'dashboard/components/data',
+    [\App\Http\Controllers\ComponentController::class, 'data']
+)->name('components.data');
+
 Route::group(
     [
         'middleware' => ['auth'],
@@ -46,12 +51,6 @@ Route::group(
         )
             ->parameters(['categories' => 'm_category'])
             ->names('components.categories');
-
-        Route::get(
-            'components/data',
-            [\App\Http\Controllers\ComponentController::class, 'data']
-        )
-            ->name('components.data');
 
         Route::resource('components', \App\Http\Controllers\ComponentController::class)
             ->parameters(['components' => 'm_component']);

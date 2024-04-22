@@ -19,10 +19,8 @@ class DTComponentResource extends JsonResource
             'category' => new DTCategoryResource($this->category),
             'created_at' => Carbon::create($this->created_at)->diffForHumans(),
             'actions' => [
-                // 'enabled' => request()->user()->can('enabled', $this->resource),
-                // 'disabled' => request()->user()->can('disabled', $this->resource),
-                // 'update' => request()->user()->can('update', $this->resource),
-                // 'delete' => request()->user()->can('forceDelete', $this->resource),
+                'update' => request()->user()?->is_admin,
+                'delete' => request()->user()?->is_admin,
             ],
         ];
     }

@@ -10,15 +10,17 @@
                 </div>
 
                 <div class="flex items-center gap-1">
-                    <button onclick="export_monthly.showModal()" class="btn btn-secondary">
-                        <span>EXPORT BULANAN</span>
-                        {{-- <x-icons.plus class="w-5 h-5 stroke-current" /> --}}
-                    </button>
+                    @if (Auth::user()->is_admin)
+                        <button onclick="export_monthly.showModal()" class="btn btn-secondary">
+                            <span>EXPORT BULANAN</span>
+                            {{-- <x-icons.plus class="w-5 h-5 stroke-current" /> --}}
+                        </button>
 
-                    <a href="{{ route('dshb.components.create') }}" class="btn btn-primary">
-                        <span>TAMBAH</span>
-                        <x-icons.plus class="w-5 h-5 stroke-current" />
-                    </a>
+                        <a href="{{ route('dshb.components.create') }}" class="btn btn-primary">
+                            <span>TAMBAH</span>
+                            <x-icons.plus class="w-5 h-5 stroke-current" />
+                        </a>
+                    @endif
                 </div>
             </div>
 
