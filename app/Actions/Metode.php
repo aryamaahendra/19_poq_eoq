@@ -47,7 +47,6 @@ class Metode
 
             // dd('EOQ: ' . $EOQ . '; POQ: ' . $POQ . '; ROP: ' . $ROP);
 
-
             Algorithm::updateOrCreate(
                 [
                     'component_id' => $component->id,

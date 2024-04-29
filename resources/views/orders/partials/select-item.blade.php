@@ -39,7 +39,8 @@
     <div class="grid grid-cols-2 gap-2 mt-4">
         <input type="hidden" name="components[{{ $key }}][label]"
             value="{{ $old['label'] }}" />
-        <label class="flex items-center gap-2 input input-sm input-bordered">
+
+        <label class="flex items-center gap-2 input input-sm input-bordered unit_price">
             <span class="text-base-content/60">Harga Unit: </span>
             <input type="text" name="components[{{ $key }}][unit_price]" class="grow"
                 placeholder="1000000" value="{{ $old['unit_price'] }}" required />

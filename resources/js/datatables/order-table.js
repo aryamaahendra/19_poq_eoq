@@ -56,7 +56,7 @@ const initOrderTable = (ID, el) => {
                 render: (data, type, row) => {
                     console.log(row);
                     return wrapper(
-                        basicLink(`${dashboard_url}/pembelian/${data}/excel`, spreadsheetIcon),
+                        // basicLink(`${dashboard_url}/pembelian/${data}/excel`, spreadsheetIcon),
                         row.status && row.status != 'pendding' ? orderStatus(`${dashboard_url}/pembelian/status/${data}`, clockIcon, 'pendding') : '',
                         row.status && row.status != 'dileviry' ? orderStatus(`${dashboard_url}/pembelian/status/${data}`, dileviryIcon, 'dileviry') : '',
                         row.status && row.status != 'success' ? orderStatus(`${dashboard_url}/pembelian/status/${data}`, checklistIcons, 'success') : '',

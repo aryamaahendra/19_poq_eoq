@@ -9,6 +9,7 @@ use App\Models\SellItem;
 use Illuminate\Foundation\Http\FormRequest;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Str;
 
 class CreateSell extends FormRequest implements Fulfill
 {
@@ -29,10 +30,10 @@ class CreateSell extends FormRequest implements Fulfill
     {
         return [
             "components" => ['required', 'array', 'min:1'],
-            "components.*.unit_price" => ['required', 'numeric', 'min:1'],
+            // "components.*.unit_price" => ['required', 'numeric', 'min:1'],
             "components.*.qty" => ['required', 'numeric', 'min:1'],
             "components.*.description" => ['required', 'string'],
-            "no" => ['required', 'string'],
+            // "no" => ['required', 'string'],
             "date" => ['required', 'date'],
             "vehicle_number" => ['required', 'string'],
             "driver_name" => ['required', 'string'],
@@ -48,7 +49,7 @@ class CreateSell extends FormRequest implements Fulfill
             $sell = new Sell();
             $sell->forceFill(
                 [
-                    'no' => $inputs['no'],
+                    'no' => Str::random(8),
                     'vehicle_number' => $inputs['vehicle_number'],
                     'driver_name' => $inputs['driver_name'],
                     'date' => $inputs['date'],
@@ -76,7 +77,7 @@ class CreateSell extends FormRequest implements Fulfill
                         'sell_id' => $sell->id,
                         'component_id' => $key,
                         'qty' => $row['qty'],
-                        'unit_price' => $row['unit_price'],
+                        'unit_price' => 1,
                         'total_price' => $totalPrice,
                         'description' => $row['description'],
                     ]

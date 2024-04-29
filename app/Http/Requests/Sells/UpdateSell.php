@@ -28,7 +28,7 @@ class UpdateSell extends CreateSell
             // Update Order
             $sell->forceFill(
                 [
-                    'no' => $inputs['no'],
+                    // 'no' => $inputs['no'],
                     'vehicle_number' => $inputs['vehicle_number'],
                     'driver_name' => $inputs['driver_name'],
                     'date' => $inputs['date'],
@@ -61,7 +61,7 @@ class UpdateSell extends CreateSell
                     $item->forceFill(
                         [
                             'qty' => $inputs['components'][$key]['qty'],
-                            'unit_price' => $inputs['components'][$key]['unit_price'],
+                            // 'unit_price' => $inputs['components'][$key]['unit_price'],
                             'total_price' => $totalPrice,
                             'description' => $inputs['components'][$key]['description'],
                         ]

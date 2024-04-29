@@ -125,7 +125,7 @@ $.when($.ready).then(function () {
 
                         <div class="mt-4 grid grid-cols-2 gap-2 ">
                             <input type="hidden" name="components[${e.detail.choice.value}][label]" value="${e.detail.choice.label}" />
-                            <label class="flex items-center gap-2 input input-sm input-bordered">
+                            <label class="flex items-center gap-2 input input-sm input-bordered unit_price">
                                 <span class="text-base-content/60">Harga Unit: </span>
                                 <input type="text" name="components[${e.detail.choice.value}][unit_price]" class="grow" placeholder="1000000" required />
                             </label>

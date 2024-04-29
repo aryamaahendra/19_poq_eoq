@@ -34,11 +34,11 @@
                 </div>
 
                 <div class="grid grid-cols-2 gap-2 pb-8 mb-8 border-b">
-                    <x-forms.label-with-error name="no" label="No."
+                    {{-- <x-forms.label-with-error name="no" label="No."
                         required="{{ true }}">
                         <x-forms.input-text type="text" name="no" placeholder="**/ST/2022"
                             value="{{ old('no') }}" required />
-                    </x-forms.label-with-error>
+                    </x-forms.label-with-error> --}}
 
                     <x-forms.label-with-error name="date" label="Tanggal"
                         required="{{ true }}">

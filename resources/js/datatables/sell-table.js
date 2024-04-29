@@ -41,7 +41,7 @@ const initSellTable = (ID, el) => {
                 data: "id",
                 render: (data, type, row) => {
                     return wrapper(
-                        basicLink(`${dashboard_url}/penjualan/${data}/excel`, spreadsheetIcon),
+                        // basicLink(`${dashboard_url}/penjualan/${data}/excel`, spreadsheetIcon),
                         linkEdit(`${dashboard_url}/penjualan/${data}/edit`),
                         btnDelete(`${dashboard_url}/penjualan/${data}`)
                     );

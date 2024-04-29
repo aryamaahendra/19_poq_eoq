@@ -106,6 +106,10 @@ summary.active {
     @apply !hidden;
 }
 
+.sell .unit_price {
+    @apply !hidden;
+}
+
 #kanban-wrapper .kanban-board {
     @apply bg-base-100 border border-base-300 rounded-3xl;
 }
@@ -120,4 +124,16 @@ summary.active {
 
 #kanban-wrapper .kanban-board .kanban-board-header .kanban-title-board {
     @apply font-medium text-base;
+}
+
+[data-order="1"] .kanban-board-header .kanban-title-board {
+    @apply badge badge-warning p-3;
+}
+
+[data-order="2"] .kanban-board-header .kanban-title-board {
+    @apply badge badge-info p-3;
+}
+
+[data-order="3"] .kanban-board-header .kanban-title-board {
+    @apply badge badge-success p-3;
 }
