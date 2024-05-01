@@ -39,6 +39,24 @@
                 </select>
             </x-forms.label-with-error>
 
+            <x-forms.label-with-error name="order_cost" label="Biaya Pemesanan"
+                required="{{ true }}">
+                <x-forms.input-text type="number" min="1" name="order_cost" placeholder="10000"
+                    value="{{ old('order_cost') }}" required />
+            </x-forms.label-with-error>
+
+            <x-forms.label-with-error name="holding_cost_unit" label="Biaya Penyimpanan"
+                required="{{ true }}">
+                <x-forms.input-text type="number" min="1" name="holding_cost_unit"
+                    placeholder="100" value="{{ old('holding_cost_unit') }}" required />
+            </x-forms.label-with-error>
+
+            <x-forms.label-with-error name="lead_time" label="Lead Time"
+                required="{{ true }}">
+                <x-forms.input-text type="number" min="1" name="lead_time" placeholder="1"
+                    value="{{ old('lead_time') }}" required />
+            </x-forms.label-with-error>
+
             <div class="flex justify-end !mt-3 gap-1">
                 <a href="{{ route('dshb.users.index') }}" class="btn btn-primary btn-ghost">
                     <x-icons.arrow-left class="w-4 h-4" />

@@ -9,8 +9,12 @@
 
             @php
                 $id = $component->id;
+                $category_id = $component->category_id;
                 $name = $component->name;
                 $measurement = $component->measurement;
+                $order_cost = $component->order_cost;
+                $holding_cost_unit = $component->holding_cost_unit;
+                $lead_time = $component->lead_time;
             @endphp
 
             <x-forms.label-with-error name="name" label="Name" required="{{ true }}">
@@ -24,7 +28,7 @@
                 <select name="category_id" class="w-full select select-bordered">
                     <option disabled selected>pilih category</option>
                     @forelse ($categories as $category)
-                        <option @selected($category->id == (old('category_id') ?? $id)) value="{{ $category->id }}">
+                        <option @selected($category->id == (old('category_id') ?? $category_id)) value="{{ $category->id }}">
                             {{ $category->name }}
                         </option>
                     @empty
@@ -44,6 +48,25 @@
                     @empty
                     @endforelse
                 </select>
+            </x-forms.label-with-error>
+
+            <x-forms.label-with-error name="order_cost" label="Biaya Pemesanan"
+                required="{{ true }}">
+                <x-forms.input-text type="number" min="1" name="order_cost" placeholder="10000"
+                    value="{{ old('order_cost') ?? $order_cost }}" required />
+            </x-forms.label-with-error>
+
+            <x-forms.label-with-error name="holding_cost_unit" label="Biaya Penyimpanan"
+                required="{{ true }}">
+                <x-forms.input-text type="number" min="1" name="holding_cost_unit"
+                    placeholder="100" value="{{ old('holding_cost_unit') ?? $holding_cost_unit }}"
+                    required />
+            </x-forms.label-with-error>
+
+            <x-forms.label-with-error name="lead_time" label="Lead Time"
+                required="{{ true }}">
+                <x-forms.input-text type="number" min="1" name="lead_time" placeholder="1"
+                    value="{{ old('lead_time') ?? $lead_time }}" required />
             </x-forms.label-with-error>
 
             <div class="flex justify-end !mt-3 gap-1">

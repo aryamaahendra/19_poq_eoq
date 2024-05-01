@@ -28,7 +28,10 @@ class CreateComponent extends FormRequest implements Fulfill
         return [
             'name' => ['required', 'string', 'max:128'],
             'category_id' => ['required', 'numeric'],
-            'measurement' => ['required', 'string', 'in:' . Arr::join(MeasurementEnum::all(), ',')]
+            'measurement' => ['required', 'string', 'in:' . Arr::join(MeasurementEnum::all(), ',')],
+            'order_cost' => ['required', 'numeric', 'min:1'],
+            'holding_cost_unit' => ['required', 'numeric', 'min:1'],
+            'lead_time' => ['required', 'numeric', 'min:1'],
         ];
     }
 
