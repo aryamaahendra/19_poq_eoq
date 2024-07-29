@@ -1,9 +1,19 @@
 @extends('components.layouts.dashboard')
 
 @section('content')
+    <div class="w-full max-w-lg mx-auto mt-6">
+        <div class="breadcrumbs text-sm">
+            <ul>
+                <li><a>Master Data</a></li>
+                <li><a>Kategori Component</a></li>
+                <li>Update Kategori Component</li>
+            </ul>
+        </div>
+    </div>
+
     <div class="w-full max-w-lg mx-auto my-6 main-card">
-        <form action="{{ route('dshb.components.categories.update', ['m_category' => $category->id]) }}"
-            method="POST" class="card-body">
+        <form action="{{ route('dshb.components.categories.update', ['m_category' => $category->id]) }}" method="POST"
+            class="card-body">
             @csrf
             @method('PUT')
 

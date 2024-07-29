@@ -9,23 +9,13 @@
     <li>
         <details>
             <summary @class([
-                'active' =>
-                    Route::is('dshb.sell.*') ||
-                    Route::is('dshb.order.*') ||
-                    Route::is('dshb.algoritm.index'),
+                'active' => Route::is('dshb.order.*') || Route::is('dshb.algoritm.index'),
             ])>
                 <x-icons.shopping-bag class="w-5 h-5" />
                 <span>Transaksi</span>
             </summary>
 
             <ul class="gap-1 !border shadow-md !mt-6 w-48 space-y-1 z-30">
-                <li>
-                    <a href="{{ route('dshb.sell.index') }}" @class(['active' => Route::is('dshb.sell.*')])>
-                        <x-icons.shopping-bag-minus class="w-5 h-5" />
-                        <span>Penjualan</span>
-                    </a>
-                </li>
-
                 <li>
                     <a href="{{ route('dshb.order.index') }}" @class(['active' => Route::is('dshb.order.*')])>
                         <x-icons.shopping-bag-plus class="w-5 h-5" />
@@ -47,6 +37,7 @@
         <details>
             <summary @class([
                 'active' =>
+                    Route::is('dshb.sell.*') ||
                     Route::is('dshb.users.*') ||
                     Route::is('dshb.components.categories.*') ||
                     Route::is('dshb.components.*'),
@@ -56,6 +47,13 @@
             </summary>
 
             <ul class="gap-1 !border shadow-md !mt-6 w-60 space-y-1 z-30">
+                <li>
+                    <a href="{{ route('dshb.sell.index') }}" @class(['active' => Route::is('dshb.sell.*')])>
+                        <x-icons.shopping-bag-minus class="w-5 h-5" />
+                        <span>Pemakaian</span>
+                    </a>
+                </li>
+
                 <li>
                     <a href="{{ route('dshb.components.index') }}" @class([
                         'active' =>
@@ -68,8 +66,7 @@
                 </li>
 
                 <li>
-                    <a href="{{ route('dshb.components.categories.index') }}"
-                        @class(['active' => Route::is('dshb.components.categories.*')])>
+                    <a href="{{ route('dshb.components.categories.index') }}" @class(['active' => Route::is('dshb.components.categories.*')])>
                         <x-icons.box class="w-5 h-5" />
                         <span>Kategori Components</span>
                     </a>
@@ -88,7 +85,7 @@
     <li>
         <a href="{{ route('dshb.sell.index') }}" @class(['active' => Route::is('dshb.sell.*')])>
             <x-icons.shopping-bag-minus class="w-5 h-5" />
-            <span>Penjualan</span>
+            <span>Pemakaian</span>
         </a>
     </li>
     <li>

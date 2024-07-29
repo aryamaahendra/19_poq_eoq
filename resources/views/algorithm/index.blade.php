@@ -1,6 +1,15 @@
 @extends('components.layouts.dashboard')
 
 @section('content')
+    <div class="w-full max-w-6xl mx-auto mt-6">
+        <div class="breadcrumbs text-sm">
+            <ul>
+                <li><a>Transaksi</a></li>
+                <li>POQ & EOQ</li>
+            </ul>
+        </div>
+    </div>
+
     <div class="w-full max-w-6xl mx-auto my-6 main-card">
         <div class="p-0 card-body" datatable="algorithm-table">
             <div class="flex items-center justify-between px-4 pt-4 mb-2">
@@ -51,16 +60,15 @@
             <h3 class="text-lg font-bold">PROSES EOQ & POQ</h3>
 
             <div id="proses_algo_wrapper" class="space-y-2">
-                <x-forms.label-with-error name="maxof" label="Max OF (Order Frequency)"
-                    required="{{ true }}">
+                <x-forms.label-with-error name="maxof" label="Max OF (Order Frequency)" required="{{ true }}">
                     <x-forms.input-text type="number" min="1" name="maxof" placeholder="1"
                         value="{{ old('no') }}" required />
                 </x-forms.label-with-error>
 
                 <x-forms.label-with-error name="order_date" label="Tanggal Pemesanan (no space)"
                     required="{{ true }}">
-                    <x-forms.input-text type="text" name="order_date" placeholder="1,15,29"
-                        value="{{ old('no') }}" required />
+                    <x-forms.input-text type="text" name="order_date" placeholder="1,15,29" value="{{ old('no') }}"
+                        required />
                 </x-forms.label-with-error>
             </div>
 

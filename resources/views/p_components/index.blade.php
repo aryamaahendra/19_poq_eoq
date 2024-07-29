@@ -1,6 +1,16 @@
 @extends('components.layouts.dashboard')
 
 @section('content')
+    <div class="w-full max-w-6xl mx-auto mt-6">
+        <div class="breadcrumbs text-sm">
+            <ul>
+                <li><a>Master Data</a></li>
+                <li><a>Component</a></li>
+                <li>List Component</li>
+            </ul>
+        </div>
+    </div>
+
     <div class="w-full max-w-6xl mx-auto my-6 main-card">
         <div class="p-0 card-body" datatable="components-table">
             <div class="flex items-center justify-between px-4 pt-4 mb-2">
@@ -63,8 +73,7 @@
                     <option value="12">DESEMBER</option>
                 </select>
 
-                <input type="text" name="year" placeholder="2022"
-                    class="w-full input input-bordered" />
+                <input type="text" name="year" placeholder="2022" class="w-full input input-bordered" />
             </div>
             <div class="modal-action">
                 <form method="dialog">

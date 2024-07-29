@@ -1,6 +1,16 @@
 @extends('components.layouts.dashboard')
 
 @section('content')
+    <div class="w-full max-w-6xl mx-auto mt-6">
+        <div class="breadcrumbs text-sm">
+            <ul>
+                <li><a>Master Data</a></li>
+                <li><a>Pengguna</a></li>
+                <li>List Pengguna</li>
+            </ul>
+        </div>
+    </div>
+
     <div class="w-full max-w-6xl mx-auto my-6 main-card">
         <div class="p-0 card-body" datatable="users-table">
             <div class="flex items-center justify-between px-4 pt-4 mb-2">

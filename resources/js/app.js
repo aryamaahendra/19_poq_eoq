@@ -4,8 +4,10 @@ import Choices from "choices.js";
 import { initFlashMessage } from "./utils";
 
 import {
-    initComponentCategories, initComponentTable,
-    initOrderTable, initUserTable
+    initComponentCategories,
+    initComponentTable,
+    initOrderTable,
+    initUserTable,
 } from "./datatables";
 import initSellTable from "./datatables/sell-table";
 
@@ -33,7 +35,7 @@ $.when($.ready).then(function () {
     //                         <span class="text-error">*</span>
     //                     </span>
     //                 </div>
-    //                 <input type="date" name="date[]" required="required" class="w-full input input-bordered" />
+    //                 <input type="date" name="date[]"=" class="w-full input input-bordered" />
     //             </label>
     //             `)
     //         } else if (e.currentTarget.value < currVal) {
@@ -84,24 +86,24 @@ $.when($.ready).then(function () {
     initKanban();
 
     $(`[choicejs="components"]`).each((idx, el) => {
-
         let items = [];
 
-        el.childNodes.forEach(child => {
+        el.childNodes.forEach((child) => {
             items.push({
                 value: $(child).attr("value"),
                 label: $(child).text().trim(),
                 customProperties: {
                     measurement: $(child).data("measurement"),
                 },
-            })
+            });
         });
 
         el.innerHTML = "";
 
         const choices = new Choices(el, {
             classNames: {
-                containerInner: "choices__inner !rounded-full h-12 border border-base-300 bg-base-100",
+                containerInner:
+                    "choices__inner !rounded-full h-12 border border-base-300 bg-base-100",
             },
         });
 
@@ -109,7 +111,6 @@ $.when($.ready).then(function () {
         items = [];
 
         el.addEventListener("choice", (e) => {
-
             if (items.includes(e.detail.choice.value)) return;
             items.push(e.detail.choice.value);
 
@@ -127,12 +128,12 @@ $.when($.ready).then(function () {
                             <input type="hidden" name="components[${e.detail.choice.value}][label]" value="${e.detail.choice.label}" />
                             <label class="flex items-center gap-2 input input-sm input-bordered unit_price">
                                 <span class="text-base-content/60">Harga Unit: </span>
-                                <input type="text" name="components[${e.detail.choice.value}][unit_price]" class="grow" placeholder="1000000" required />
+                                <input type="text" name="components[${e.detail.choice.value}][unit_price]" class="grow" placeholder="1000000" />
                             </label>
 
                             <label class="flex items-center gap-2 input input-sm input-bordered">
                                 <span class="text-base-content/60">Quantity: </span>
-                                <input type="text" name="components[${e.detail.choice.value}][qty]" class="grow" placeholder="9999" required />
+                                <input type="text" name="components[${e.detail.choice.value}][qty]" class="grow" placeholder="9999" />
                                 <span class="text-base-content/60">Buah</span>
                             </label>
                             <label class="flex items-center gap-2 input input-sm input-bordered vehicle_number_wrapper">
@@ -141,7 +142,7 @@ $.when($.ready).then(function () {
                             </label>
                             <label class="flex items-center gap-2 input input-sm input-bordered">
                                 <span class="text-base-content/60">Ket: </span>
-                                <input type="text" name="components[${e.detail.choice.value}][description]" class="grow" placeholder="-" required value="-" />
+                                <input type="text" name="components[${e.detail.choice.value}][description]" class="grow" placeholder="-" value="-" />
                             </label>
                         </div>
                     </div>
@@ -153,7 +154,7 @@ $.when($.ready).then(function () {
             const currEl = e.currentTarget;
             const val = $(currEl).attr("delete-component");
             $(`#component-container #component-item-${val}`).remove();
-            items = items.filter(item => item != val);
-        })
-    })
+            items = items.filter((item) => item != val);
+        });
+    });
 });

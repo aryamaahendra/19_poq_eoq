@@ -64,9 +64,12 @@ class CreateSell extends FormRequest implements Fulfill
 
             // Create oreder item
             foreach ($inputs['components'] as $key => $row) {
-                $totalPrice = (int) $row['qty'] * (int) $row['unit_price'];
+                $totalPrice = (int) $row['qty'] * 0;
                 $sumPrice += $totalPrice;
                 $item = new SellItem();
+
+                $comp = Component::where('id', $key)->first();
+                if ($comp->in_stock <= 0) abort(400, 'stock tdk mencukupi!');
 
                 // Add component stock
                 Component::where('id', $key)

@@ -1,9 +1,18 @@
 @extends('components.layouts.dashboard')
 
 @section('content')
+    <div class="w-full max-w-lg mx-auto mt-6">
+        <div class="breadcrumbs text-sm">
+            <ul>
+                <li><a>Master Data</a></li>
+                <li><a>Pengguna</a></li>
+                <li>Update Pengguna</li>
+            </ul>
+        </div>
+    </div>
+
     <div class="w-full max-w-lg mx-auto my-6 main-card">
-        <form action="{{ route('dshb.users.update', ['m_user' => $user->id]) }}" method="POST"
-            class="card-body">
+        <form action="{{ route('dshb.users.update', ['m_user' => $user->id]) }}" method="POST" class="card-body">
             @csrf
             @method('PUT')
 
