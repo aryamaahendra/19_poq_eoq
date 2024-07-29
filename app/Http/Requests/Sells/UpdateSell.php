@@ -49,7 +49,7 @@ class UpdateSell extends CreateSell
                     array_push($exist, $key);
 
                     $qty = (int) $inputs['components'][$key]['qty'];
-                    $unit_price = (int) $inputs['components'][$key]['unit_price'];
+                    $unit_price = 0;
                     $totalPrice = $qty * $unit_price;
                     $sumPrice += $totalPrice;
 
